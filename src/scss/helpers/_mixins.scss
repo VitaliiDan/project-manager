@@ -1,0 +1,6 @@
+//@include font($color1, 600, 22px);
+@mixin font($color, $weight, $size){
+  color: $color;
+  font-weight: $weight;
+  font-size: $size;
+}
