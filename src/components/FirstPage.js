@@ -1,5 +1,4 @@
 import React, {useContext, useEffect, useState} from "react";
-import Header from "./Header";
 import Pagination from '@material-ui/lab/Pagination';
 import {AppContext} from "../context/appContext";
 import UserCard from "./UserCard";
@@ -12,11 +11,13 @@ const FirstPage = () => {
 
     useEffect(() => {
         if (state.users[0]) {
-            const tempArray = state.users.map((el, index) => {
-                if ((index / countPerPage >= paginationPage - 1) && (index / countPerPage < paginationPage)) {
-                    return <UserCard key={el.id} user={el}/>
-                }
-            });
+
+            const tempArray = state.users
+                .filter((el, index) =>
+                    (index / countPerPage >= paginationPage - 1) && (index / countPerPage < paginationPage))
+                .map(el => <UserCard key={el.id} user={el}/>)
+
+
             setDrawArray([...tempArray])
         }
     }, [paginationPage, state.users])
@@ -34,7 +35,6 @@ const FirstPage = () => {
 
     return (
         <div className='firstPageWrapper'>
-            <Header/>
             <div className='firstPageWrapper_typography'>
                 <h1>Wybierz teamleader’a <span> (wybierz jednego uzytkownika by przejść dalej): </span></h1>
             </div>
