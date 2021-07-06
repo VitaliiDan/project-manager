@@ -24,17 +24,38 @@ const SummeryPage = () => {
                     </div>
                 </div>
                 <div className='summeryPageWrapper_projectInfo'>
-
+                    <h1>NAZWA PROJEKTU:</h1>
+                    <div className='summeryPageWrapper_blueLine'></div>
+                    <h1>{state.project.name}</h1>
                 </div>
-                <div className='summeryPageWrapper_orgInfo'>
 
+                <div className='summeryPageWrapper_orgInfo'>
+                    <h1>ORGANIZACJA:</h1>
+                    <div className='summeryPageWrapper_blueLine'></div>
+                    <h1>{state.projectOrg}</h1>
                 </div>
             </div>
 
             <div className='summeryPageWrapper_rightSide'>
-                <div className='summeryPageWrapper_followersInfo'>
-
-                </div>
+                <h1 className='summeryPageWrapper_followersInfo'>
+                    UŻYTKOWNICY:
+                </h1>
+                {
+                    state.projectFollowers
+                        ?
+                        <ul className='summeryPageWrapper_followersWrapper'>
+                            {state.projectFollowers.map((el, index) =>
+                            <li key={el.id} >
+                                <span>{index+1}.</span>
+                                <img src={el.avatar} alt="avatar"/>
+                                <span>{el.login}</span>
+                            </li>
+                            )
+                            }
+                        </ul>
+                        :
+                        null
+                }
             </div>
 
         </div>
