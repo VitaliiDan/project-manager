@@ -1,6 +1,6 @@
 import {
     CLEAR_ORG_INFO,
-    CLEAR_PROJECT_INFO,
+    CLEAR_PROJECT_INFO, CLEAR_STATE,
     CLEAR_TEAMLIDER_INFO, FETCH_FOLLOWERS, FETCH_ORGS,
     FETCH_PROJECTS,
     FETCH_USERS,
@@ -25,6 +25,22 @@ const handlers = {
     [CLEAR_TEAMLIDER_INFO]: state => ({...state, teamLider: {login: '', avatar: '', id: ''}, projects: [], followers: [], org: []}),
     [CLEAR_PROJECT_INFO]: state => ({...state, project: ''}),
     [CLEAR_ORG_INFO]: state => ({...state, projectOrg: ''}),
+    [CLEAR_STATE]: (state) => ({
+        ...state,
+        projects: [],
+        followers: [],
+        orgs: [],
+        loading: false,
+        page: 1,
+        teamLider: {
+            login: '',
+            avatar: '',
+            id: ''
+        },
+        project: '',
+        projectFollowers: [],
+        projectOrg: ''
+    }),
     DEFAULT: state => state
 }
 

@@ -5,7 +5,7 @@ import {appReducer} from "./appReducer";
 
 import {
     CLEAR_ORG_INFO,
-    CLEAR_PROJECT_INFO,
+    CLEAR_PROJECT_INFO, CLEAR_STATE,
     CLEAR_TEAMLIDER_INFO, FETCH_FOLLOWERS, FETCH_ORGS,
     FETCH_PROJECTS,
     FETCH_USERS,
@@ -37,13 +37,6 @@ export const AppState = ({children}) => {
     }
 
     const [state, dispatch] = useReducer(appReducer, initialState);
-
-    // useEffect(() => {
-    //     console.log(state.teamLider);
-    //     console.log(state.project);
-    //     console.log(state.projectFollowers);
-    //     console.log(state.projectOrg);
-    // }, [state])
 
     const showLoader = () => dispatch({type: SHOW_LOADER});
 
@@ -109,6 +102,7 @@ export const AppState = ({children}) => {
     const clearTeamLeaderInfo = () => dispatch({type: CLEAR_TEAMLIDER_INFO});
     const clearProjectInfo = () => dispatch({type: CLEAR_PROJECT_INFO});
     const clearProjectOrg = () => dispatch({type: CLEAR_ORG_INFO});
+    const clearState = () => dispatch({type: CLEAR_STATE});
 
     const setProject = (project) => {
         const payload = {
@@ -149,6 +143,7 @@ export const AppState = ({children}) => {
             setProjectOrg, clearProjectOrg,
             setProjectFollowers,
             pageIncrement, pageDecrement,
+            clearState,
             state: state
         }}>
             {children}

@@ -12,11 +12,18 @@
 @import './components/FirstPage';
 @import './components/UserCard';
 @import './components/SecondPage';
+@import './components/OrgSet';
 @import './components/ThirdPage';
 @import './components/SummeryPage';
 
-
-
 body {
   font-family: $font-base;
+}
+
+.container {
+  max-width: 1140px;
+  min-width: 350px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
 }

@@ -3,6 +3,7 @@ import turnBackIco from "../assets/turnBack-enable.png";
 import turnForwardEnIco from "../assets/turnForward-enable.png";
 import turnForwardDisIco from "../assets/turnForward-disable.png";
 import {AppContext} from "../context/appContext";
+import OrgSet from "./OrgSet";
 
 const ThirdPage = () => {
 
@@ -10,7 +11,6 @@ const ThirdPage = () => {
         state,
         pageIncrement,
         pageDecrement,
-        setProjectOrg,
         clearProjectOrg,
         setProjectFollowers
     } = useContext(AppContext);
@@ -26,7 +26,7 @@ const ThirdPage = () => {
 
     const checkHandler = (checkedEl) => {
         const tempArray = checkedFollowers.map(el => {
-            return el.id === checkedEl.id ? {...el, checked : !el.checked } : {...el}
+            return el.id === checkedEl.id ? {...el, checked: !el.checked} : {...el}
         })
         setCheckedFollowers([...tempArray]);
     }
@@ -42,66 +42,59 @@ const ThirdPage = () => {
                     clearProjectOrg();
                 }}
             />
-
-            <div className='thirdPageWrapper_orgWrapper'>
-                <div className='orgWrapper_typography'>
-                    <h1>ORGANIZACJE:</h1>
+            <div
+                className='thirdPageWrapper_contentWrapper container'
+                style={{margin: '0'}}
+            >
+                <div className='thirdPageWrapper_orgWrapper'>
+                    <div className='orgWrapper_typography'>
+                        <h1>ORGANIZACJE:</h1>
+                    </div>
+                    <OrgSet />
                 </div>
-                <select
-                    value={state.projectOrg}
-                    onChange={(eve) => setProjectOrg(eve.target.value)}
-                >
-                    <option value="" disabled={true}>set ORG</option>
-                    {
-                        state.orgs
-                            ?
-                            state.orgs.map(el => <option key={el.id} value={el.login}>{el.login}</option>)
-                            :
-                            null
-                    }
-                </select>
-            </div>
 
 
-            <div className='thirdPageWrapper_followersWrapper'>
-                <div className='followersWrapper_typography'>
-                    <h1>UŻYTKOWNICY:</h1>
-                </div>
-                <div className='followersWrapper_labelWrapper'>
-                    {
-                        state.followers
-                            ?
-                            state.followers.map((el, index) =>
-                                <label
-                                    className='followersWrapper_label'
-                                    key={el.id}
-                                >
-                                    <p>
-                                        <span>{index + 1}.</span>
-                                        <img src={el.avatar} alt=""/>
-                                        <span>{el.login.length <= 15 ? el.login : `${el.login.slice(0, 11)}...`}</span>
-                                    </p>
+                <div className='thirdPageWrapper_followersWrapper'>
+                    <div className='followersWrapper_typography'>
+                        <h1>UŻYTKOWNICY:</h1>
+                    </div>
+                    <div className='followersWrapper_labelWrapper'>
+                        {
+                            state.followers
+                                ?
+                                state.followers.map((el, index) =>
+                                    <label
+                                        className='followersWrapper_label'
+                                        key={el.id}
+                                    >
+                                        <p>
+                                            <span>{index + 1}.</span>
+                                            <img src={el.avatar} alt=""/>
+                                            <span>{el.login.length <= 15 ? el.login : `${el.login.slice(0, 11)}...`}</span>
+                                        </p>
 
-                                    <input
-                                        className='followersWrapper_checkbox'
-                                        type="checkbox"
-                                        value={el.name}
-                                        onChange={() => checkHandler(el)}
-                                    />
-                                </label>
-                            )
-                            :
-                            null
-                    }
+                                        <input
+                                            className='followersWrapper_checkbox'
+                                            type="checkbox"
+                                            value={el.name}
+                                            onChange={() => checkHandler(el)}
+                                        />
+                                    </label>
+                                )
+                                :
+                                null
+                        }
+                    </div>
                 </div>
             </div>
+
 
             {state.projectOrg
                 ?
                 <img
                     className='thirdPageWrapper_navigationButton'
                     src={turnForwardEnIco}
-                    onClick={()=> {
+                    onClick={() => {
                         pageIncrement();
                         setProjectFollowers(checkedFollowers);
                     }}

@@ -1,6 +1,10 @@
 .userCardWrapper {
-  width: 340px;
-  height: 90px;
+  width: 360px;
+  height: 94px;
+  @media screen and (max-width: $mobileWidth) {
+    width: 310px;
+    height: 80px;
+  }
   padding-left: 15px;
   border: 2px solid $userBoxBorder;
   border-radius: 10px;

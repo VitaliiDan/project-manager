@@ -5,12 +5,13 @@
   width: 100%;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 
   img {
     width: 78px;
     height: 78px;
     cursor: pointer;
-    margin: 0 5%;
+    margin: 0 150px;
 
     &:hover {
       transform: scale(1.03);
@@ -19,21 +20,24 @@
 
   &_content {
     flex-grow: 1;
+    max-width: 590px !important;
     height: 100%;
     padding: 20px;
   }
 
   &_typography {
     display: flex;
-    padding: 28px 20px;
-    justify-content: center;
+    padding: 28px 0;
+    width: 100%;
+    justify-content: flex-start;
     align-items: flex-start;
 
 
     h1 {
-      @include font($secondTextColor, 300, 28px);
+      width: 100%;
+      @include font($secondTextColor, 700, 28px);
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 0.15em;
       padding-bottom: 5px;
       border-bottom: 2px solid $decorColor;
 

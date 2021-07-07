@@ -26,7 +26,10 @@ const SecondPage = () => {
                 }}
             />
 
-            <div className='secondPageWrapper_content'>
+            <div
+                className='secondPageWrapper_content container'
+                style={{margin: '0'}}
+            >
                 <div className='secondPageWrapper_typography'>
                     <h1>WYBIERZ PROJEKT <span> (wybierz jeden aby przejść dalej): </span></h1>
                 </div>

@@ -5,16 +5,30 @@
   width: 100%;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+
+  &_contentWrapper {
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
   &_navigateButtons {
     width: 78px;
     height: 78px;
     cursor: pointer;
-    margin: 0 5%;
+    margin: 0 50px;
 
     &:hover {
       transform: scale(1.03);
     }
+  }
+  &_fakeNavigateButtons {
+    width: 178px;
+    height: 100%;
   }
 
   &_leftSide {
@@ -33,8 +47,23 @@
   }
 
   &_followersWrapper {
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 80%;
+
+    &::-webkit-scrollbar {
+      width: 34px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #333333;
+      border: 16px solid #fff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      width: 24px;
+      background: url("../../assets/ScrollElipse.svg") center no-repeat;
+      background-size: contain;
+    }
 
     li {
       display: flex;
@@ -63,6 +92,7 @@
 
   &_followersInfo {
     @include font($thirdTextColor, 700, 23px);
+    letter-spacing: 0.15em;
     padding-bottom: 20px;
     border-bottom: 1px solid $decorColor;
   }
@@ -81,6 +111,7 @@
 
   &_nameWrapper {
     margin-left: 21px;
+    line-height: 27px;
     @include font($thirdTextColor, 700, 23px);
   }
 
@@ -89,7 +120,7 @@
 
     h1:nth-child(1) {
       @include font($thirdTextColor, 300, 23px);
-      letter-spacing: 2px;
+      letter-spacing: 0.15em;
     }
 
     div {

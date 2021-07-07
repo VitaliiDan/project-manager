@@ -5,14 +5,15 @@
 
   &_typography {
     display: flex;
-    padding: 28px 20px;
-    justify-content: center;
-    align-items: flex-start;
+    padding: 28px 0;
+    text-align: left;
+    width: 100%;
 
     h1 {
-      @include font($secondTextColor, 300, 28px);
+      width: 100%;
+      @include font($secondTextColor, 700, 28px);
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 0.15em;
       padding-bottom: 5px;
       border-bottom: 2px solid $decorColor;
 
@@ -25,19 +26,18 @@
   }
 
   &_cardsWrapper {
-    height: 100%;
-    flex-grow: 1;
     display: flex;
     gap: 10px;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
   }
 
   &_pagination {
-    margin: 20px auto;
+    width: 100vW;
+    margin: 20px auto 0 auto;
     display: flex;
     justify-content: center;
+    background-color: #000;
   }
 }

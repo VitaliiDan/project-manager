@@ -2,8 +2,19 @@ import React, {useContext, useEffect, useState} from "react";
 import Pagination from '@material-ui/lab/Pagination';
 import {AppContext} from "../context/appContext";
 import UserCard from "./UserCard";
+import {makeStyles} from "@material-ui/styles";
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& *': {
+            color: 'white'
+        }
+    }
+}))
+
 
 const FirstPage = () => {
+    const classes = useStyles();
     const {state} = useContext(AppContext);
     const [paginationPage, setPaginationPage] = useState(1);
     const [drawArray, setDrawArray] = useState();
@@ -35,18 +46,23 @@ const FirstPage = () => {
 
     return (
         <div className='firstPageWrapper'>
-            <div className='firstPageWrapper_typography'>
-                <h1>Wybierz teamleader’a <span> (wybierz jednego uzytkownika by przejść dalej): </span></h1>
+            <div className='container'>
+                <div className='firstPageWrapper_typography'>
+                    <h1>Wybierz teamleader’a <span> (wybierz jednego uzytkownika by przejść dalej): </span></h1>
+                </div>
+                <div className='firstPageWrapper_cardsWrapper'>
+                    {drawArray ? drawArray : null}
+                </div>
             </div>
-            <div className='firstPageWrapper_cardsWrapper'>
-                {drawArray ? drawArray : null}
+
+            <div className={classes.root}>
+                <Pagination
+                    className='firstPageWrapper_pagination'
+                    count={pageCount}
+                    page={paginationPage}
+                    onChange={handleChange}
+                />
             </div>
-            <Pagination
-                className='firstPageWrapper_pagination'
-                count={pageCount}
-                page={paginationPage}
-                onChange={handleChange}
-            />
         </div>
     )
 }
